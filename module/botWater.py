@@ -11,28 +11,25 @@ import pandas as pd
 import constant as result
 import time
 
-
 DRIVER_PATH = 'chromedriver.exe'
 # custom browser
 chrome_options = Options()
 chrome_options.add_argument("--incognito")
 # open chrome
-print('[crawl-tv]: open browser')
+print('[crawl-water]: open browser')
 driver = webdriver.Chrome(service=Service(ChromeDriverManager(
 ).install()), options=chrome_options, executable_path=DRIVER_PATH)
-url = "https://www.dienmayxanh.com/tivi#c=1942&o=9&pi=14"
+url = "https://www.dienmayxanh.com/may-loc-nuoc#c=3385&o=9&pi=6"
 
 
-def botTV():
+def botAir():
     driver.get(url)
     time.sleep(30)
-
     try:
-        print('[crawl-TV]: start')
-        print('[crawl-TV]: start load all product')
+        print('[crawl-water]: start')
+        print('[crawl-water]: start load all product')
         listProduct = driver.find_elements(By.CLASS_NAME, 'main-contain')
-        #name = [pro.text for pro in listProductName]
-        print('[crawl-TV]: all product: ', len(listProduct))
+        print('[crawl-water]: all product: ', len(listProduct))
         for item in listProduct:
             productName = item.find_element(By.TAG_NAME, 'h3').text
             try:
@@ -53,15 +50,14 @@ def botTV():
             except:
                 star = 0
 
-            result.addResult(productName, result.getPrice(price), 
-                             result.getPercent(percent), ratings, star, 'Tivi', result.getPhoneCategory(productName))
-            print('[crawl-TV]: Done on: ', productName)
+            result.addResult(productName, result.getPrice(price), result.getPercent(percent), ratings, 
+                             star, 'water purifier', result.getWaterCategory(productName))
+            print('[crawl-water]: Done on: ', productName)
 
-        print('[crawl-TV]: end')
+        print('[crawl-water]: end')
         driver.quit()
     except Exception as error:
-        print('[crawl-TV]: ERROR ', error)
+        print('[crawl-water]: ERROR ', error)
         # close browser window
         driver.quit()
 
-#botTV()

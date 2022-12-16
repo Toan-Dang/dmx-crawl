@@ -8,6 +8,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 import pandas as pd
 import constant as result
+import time
 
 
 
@@ -22,6 +23,8 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 
 def botPhone():
     driver.get(url)
+    time.sleep(30)
+
     try:
         print('[crawl-phone]: start')
         print('[crawl-phone]: start load all product')
@@ -37,7 +40,7 @@ def botPhone():
             try:
                 percent = item.find_element(By.CLASS_NAME, 'percent').text
             except:
-                percent = '0%'
+                percent = '0'
             try:
                 ratings = item.find_element(By.CLASS_NAME, 'item-rating-total').text
             except:
@@ -47,7 +50,8 @@ def botPhone():
             except:
                 star = 0
 
-            result.addResult(productName, result.getPrice(price), percent, ratings, star,'phone',result.getPhoneCategory(productName))
+            result.addResult(productName, result.getPrice(price), result.getPercent(
+                percent), ratings, star, 'phone', result.getPhoneCategory(productName))
             print('[crawl-phone]: Done on: ', productName)
 
         print('[crawl-phone]: end')

@@ -5,14 +5,13 @@
 import pandas as pd
 from threading import Thread
 import constant as result
-
+import time
 def export_csv():
     print('[crawl-bot]: export product to csv')
-    df = pd.DataFrame({'productName': result.productNameList, 'price': result.priceList, 'percent': result.percentList,
-                       'rating': result.ratingList, 'star': result.starList, 'type': result.typeList, 'category': result.categoryList})
+    df = pd.DataFrame({'productName': result.productNameList, 'type': result.typeList, 'category': result.categoryList, 
+    'price': result.priceList, 'percent': result.percentList, 'rating': result.ratingList, 'star': result.starList})
     print('[crawl-bot]: data', df)
     df.to_csv('Product.csv', index=False)
-
 
 def main():
     try:

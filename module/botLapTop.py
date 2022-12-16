@@ -9,6 +9,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 import pandas as pd
 import constant as result
+import time
 
 
 DRIVER_PATH = 'chromedriver.exe'
@@ -24,6 +25,8 @@ url = "https://www.dienmayxanh.com/laptop?g=laptop-gaming#c=44&m=203,122,120,128
 
 def botLaptop():
     driver.get(url)
+    time.sleep(30)
+
     try:
         print('[crawl-laptop]: start')
         print('[crawl-laptop]: start load all product')
@@ -39,7 +42,7 @@ def botLaptop():
             try:
                 percent = item.find_element(By.CLASS_NAME, 'percent').text
             except:
-                percent = '0%'
+                percent = '0'
             try:
                 ratings = item.find_element(By.CLASS_NAME, 'item-rating-total').text
             except:
@@ -49,7 +52,7 @@ def botLaptop():
             except:
                 star = 0
 
-            result.addResult(productName, result.getPrice(price), percent, ratings,
+            result.addResult(productName, result.getPrice(price), result.getPercent(percent), ratings,
                              star, 'laptop', result.getPhoneCategory(productName))
             print('[crawl-laptop]: Done on: ', productName)
 

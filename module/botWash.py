@@ -9,7 +9,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 import pandas as pd
 import constant as result
-
+import time
 
 DRIVER_PATH = 'chromedriver.exe'
 # custom browser
@@ -24,6 +24,8 @@ url = "https://www.dienmayxanh.com/may-giat#c=1944&o=9&pi=11"
 
 def botWash():
     driver.get(url)
+    time.sleep(30)
+
     try:
         print('[crawl-wash]: start')
         print('[crawl-wash]: start load all product')
@@ -38,7 +40,7 @@ def botWash():
             try:
                 percent = item.find_element(By.CLASS_NAME, 'percent').text
             except:
-                percent = '0%'
+                percent = '0'
             try:
                 ratings = item.find_element(
                     By.CLASS_NAME, 'item-rating-total').text
@@ -50,7 +52,7 @@ def botWash():
                 star = 0
 
             result.addResult(productName, result.getPrice(
-                price), percent, ratings, star, 'washing machine', result.getPhoneCategory(productName))
+                price), result.getPercent(percent), ratings, star, 'washing machine', result.getWashCategory(productName))
             print('[crawl-wash]: Done on: ', productName)
 
         print('[crawl-wash]: end')

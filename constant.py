@@ -28,8 +28,27 @@ def getPrice(price):
         return p.replace('.', '')
     return price
 
+def getPercent(percent):
+    if (len(percent) > 2):
+        p = percent[1:]
+        return p[:-1]
+    return percent
+
 def getPhoneCategory(name):
     return name.split()[0]
+
+def getWashCategory(name):
+    category = ['LG', 'Toshiba', 'Samsung', 'Casper', 'Electrolux']
+    match = [x for x in category if x in name]
+    if(len(match) < 1):
+        return name.split()[0]
+    return match[0]
+    
+def getWaterCategory(name):
+    category = ['Karofi', 'Kangaroo', 'Sunhouse',
+                'Toshiba', 'AOSmith', 'Panasonic', 'Daikiosan', 'Korihome', 'AVA', 'Mutosi', 'Cuckoo', 'Midea', 'Kangen', 'Dmax', 'IONPIA', 'Delites', 'ROBOT', 'IonFarms', 'Fuji', 'ChungHo', 'Dreamer']
+    match = [x for x in category if x in name]
+    return match[0]
 
 
 def runPhone():

@@ -57,4 +57,3 @@ def botAir():
         # close browser window
         driver.quit()
 
-#botAir()

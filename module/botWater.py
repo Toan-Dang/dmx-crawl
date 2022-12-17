@@ -57,5 +57,3 @@ def botWater():
         # close browser window
         driver.quit()
 
-
-#botWater()

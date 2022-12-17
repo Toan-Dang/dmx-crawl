@@ -59,4 +59,3 @@ def botLaptop():
         # close browser window
         driver.quit()
 
-#botLaptop()

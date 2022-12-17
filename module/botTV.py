@@ -60,4 +60,3 @@ def botTV():
         # close browser window
         driver.quit()
 
-#botTV()

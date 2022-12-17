@@ -58,4 +58,3 @@ def botPhone():
         # close browser window
         driver.quit()
 
-#botPhone()

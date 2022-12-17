@@ -4,14 +4,7 @@
 
 from threading import Thread
 import constant as result
-import time
-# def export_csv():
-#     print('[crawl-bot]: export product to csv')
-#     df = pd.DataFrame({'productName': result.productNameList, 'type': result.typeList, 'category': result.categoryList, 
-#     'price': result.priceList, 'percent': result.percentList, 'rating': result.ratingList, 'star': result.starList})
-#     print('[crawl-bot]: data', df)
-#     df.to_csv('Product.csv', index=False)
-
+import DB as db
 def main():
     try:
         print('[crawl-bot]: start')
@@ -46,9 +39,6 @@ def main():
 
     except Exception as error:
         print('[crawl-bot]: ERROR ', error)
-
-
-
 
 
 if __name__ == "__main__":

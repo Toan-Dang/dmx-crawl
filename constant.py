@@ -7,6 +7,12 @@ import module.botWash as wash
 import module.botWater as water
 import module.botSound as sound
 import pandas as pd
+#connect db
+user = 'root'
+password = ''
+port = '3306'
+database = 'database'
+
 #define list 
 productNameList = []
 priceList = []
@@ -34,7 +40,6 @@ def export_csv():
         df.to_csv('Product.csv', index=False)
     except Exception as error:
         print('[crawl-bot]: export ERROR ', error)
-
 
 #custom function
 def getPrice(price):

@@ -57,6 +57,3 @@ def botWash():
         print('[crawl-wash]: ERROR ', error)
         # close browser window
         driver.quit()
-
-
-#botWash()

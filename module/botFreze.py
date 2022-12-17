@@ -60,5 +60,3 @@ def botFri():
         # close browser window
         driver.quit()
 
-
-#botFri()

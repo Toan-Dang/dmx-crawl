@@ -4,10 +4,7 @@
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
-import pandas as pd
 import constant as result
 import time
 
@@ -18,9 +15,8 @@ chrome_options = Options()
 chrome_options.add_argument("--incognito")
 # open chrome
 print('[crawl-tv]: open browser')
-driver = webdriver.Chrome(service=Service(ChromeDriverManager(
-).install()), options=chrome_options, executable_path=DRIVER_PATH)
-url = "https://www.dienmayxanh.com/tivi#c=1942&o=9&pi=14"
+driver = webdriver.Chrome( options=chrome_options, executable_path=DRIVER_PATH)
+url = "https://www.dienmayxanh.com/tivi#c=1942&o=9&pi=15"
 
 
 def botTV():

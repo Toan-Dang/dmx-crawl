@@ -2,16 +2,15 @@
 # @author ToanDang-19522357
 ##########
 
-import pandas as pd
 from threading import Thread
 import constant as result
 import time
-def export_csv():
-    print('[crawl-bot]: export product to csv')
-    df = pd.DataFrame({'productName': result.productNameList, 'type': result.typeList, 'category': result.categoryList, 
-    'price': result.priceList, 'percent': result.percentList, 'rating': result.ratingList, 'star': result.starList})
-    print('[crawl-bot]: data', df)
-    df.to_csv('Product.csv', index=False)
+# def export_csv():
+#     print('[crawl-bot]: export product to csv')
+#     df = pd.DataFrame({'productName': result.productNameList, 'type': result.typeList, 'category': result.categoryList, 
+#     'price': result.priceList, 'percent': result.percentList, 'rating': result.ratingList, 'star': result.starList})
+#     print('[crawl-bot]: data', df)
+#     df.to_csv('Product.csv', index=False)
 
 def main():
     try:
@@ -22,6 +21,8 @@ def main():
         t4 = Thread(target=result.runFri, args=())
         t5 = Thread(target=result.runAir, args=())
         t6 = Thread(target=result.runWash, args=())
+        t7 = Thread(target=result.runWater, args=())
+        t8 = Thread(target=result.runSound, args=())
         #start thread
         t1.start()
         t2.start()
@@ -29,6 +30,8 @@ def main():
         t4.start()
         t5.start()
         t6.start()
+        t7.start()
+        t8.start()
         #wait other thread
         t1.join()
         t2.join()
@@ -36,11 +39,15 @@ def main():
         t4.join()
         t5.join()
         t6.join()
+        t7.join()
+        t8.join()
         #export
-        export_csv()
+        result.export_csv()
 
-    except:
-        print('[crawl-bot]: ERROR')
+    except Exception as error:
+        print('[crawl-bot]: ERROR ', error)
+
+
 
 
 

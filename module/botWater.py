@@ -4,10 +4,7 @@
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
-import pandas as pd
 import constant as result
 import time
 
@@ -17,12 +14,11 @@ chrome_options = Options()
 chrome_options.add_argument("--incognito")
 # open chrome
 print('[crawl-water]: open browser')
-driver = webdriver.Chrome(service=Service(ChromeDriverManager(
-).install()), options=chrome_options, executable_path=DRIVER_PATH)
+driver = webdriver.Chrome( options=chrome_options, executable_path=DRIVER_PATH)
 url = "https://www.dienmayxanh.com/may-loc-nuoc#c=3385&o=9&pi=6"
 
 
-def botAir():
+def botWater():
     driver.get(url)
     time.sleep(30)
     try:
@@ -61,3 +57,5 @@ def botAir():
         # close browser window
         driver.quit()
 
+
+#botWater()

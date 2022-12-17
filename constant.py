@@ -7,7 +7,7 @@ import module.botWash as wash
 import module.botWater as water
 import module.botSound as sound
 import pandas as pd
-
+import config 
 #define list 
 productNameList = []
 priceList = []
@@ -32,7 +32,7 @@ def export_csv():
         df = pd.DataFrame({'productName': productNameList, 'type': typeList, 'category': categoryList,
                            'price': priceList, 'percent': percentList, 'rating': ratingList, 'star': starList})
         print('[crawl-bot]: data', df)
-        df.to_csv('Product.csv', index=False)
+        df.to_csv(config.exportToCSV, index=False)
     except Exception as error:
         print('[crawl-bot]: export ERROR ', error)
 

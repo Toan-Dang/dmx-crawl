@@ -34,9 +34,9 @@ def main():
         t6.join()
         t7.join()
         t8.join()
-        #export
+        #export/ import 
         result.export_csv()
-
+        db.aggregateDb()
     except Exception as error:
         print('[crawl-bot]: ERROR ', error)
 

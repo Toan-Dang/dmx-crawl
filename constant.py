@@ -7,11 +7,6 @@ import module.botWash as wash
 import module.botWater as water
 import module.botSound as sound
 import pandas as pd
-#connect db
-user = 'root'
-password = ''
-port = '3306'
-database = 'database'
 
 #define list 
 productNameList = []
